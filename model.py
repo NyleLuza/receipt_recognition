@@ -17,16 +17,20 @@ def convert_pdf_to_png(pdf_path, output_folder, i):
         
         # basically appliess a transformation onto a new canvas with the zoom
         pix = page.get_pixmap(matrix=mat)
-        pix.save(f"{output_folder}/receipt_{i}.png")
-        print("complete 3")
+        if f"{output_folder}/receipt_{i}.png".is_file():
+            print("File Exists already")
+        else:
+            pix.save(f"{output_folder}/receipt_{i}.png")
+            print("File saved into images")
+        print("completed conversion")
 
 i = 1
 # iterate through each item in directory
 for file_path in path.iterdir():
-    print("complete 1")
+    #print("complete 1")
     # checks if each item in the directory is not a subdirectory
     if file_path.is_file():
-        print("complete 2")
+        #print("complete 2")
         convert_pdf_to_png(file_path, "images", i)
         i+=1
         
