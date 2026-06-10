@@ -8,6 +8,8 @@ import io
 
 path = Path("pdf")
 image_path = Path("images")
+pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+
 
 def convert_pdf_to_png(pdf_path, output_folder, i):
     # opens pdf doc using pymudf library
