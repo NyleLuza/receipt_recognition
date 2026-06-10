@@ -17,7 +17,7 @@ def convert_pdf_to_png(pdf_path, output_folder, i):
         
         # basically appliess a transformation onto a new canvas with the zoom
         pix = page.get_pixmap(matrix=mat)
-        if f"{output_folder}/receipt_{i}.png".is_file():
+        if Path(f"{output_folder}/receipt_{i}.png").is_file():
             print("File Exists already")
         else:
             pix.save(f"{output_folder}/receipt_{i}.png")
