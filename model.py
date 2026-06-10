@@ -3,6 +3,7 @@ import pymupdf
 from pathlib import Path
 from PIL import Image
 import io
+import ollama
 
 # Prep Image from pdf to png
 
@@ -46,4 +47,9 @@ for images in image_path.iterdir():
         extracted_text = pytesseract.image_to_string(image_file)
         print(extracted_text)
 
+response = ollama.chat(
+    model="llama3.2",
+    messages =[{'role':'user', 'content':'Who are you?'}]
+)
+print(response['message']['content'])
         
