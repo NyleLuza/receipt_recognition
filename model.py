@@ -4,7 +4,10 @@ from pathlib import Path
 from PIL import Image
 import io
 
+# Prep Image from pdf to png
+
 path = Path("pdf")
+image_path = Path("images")
 
 def convert_pdf_to_png(pdf_path, output_folder, i):
     # opens pdf doc using pymudf library
@@ -33,4 +36,12 @@ for file_path in path.iterdir():
         #print("complete 2")
         convert_pdf_to_png(file_path, "images", i)
         i+=1
+
+for images in image_path.iterdir():
+    print(images)
+    if images.is_file():
+        image_file = Image.open(images)
+        extracted_text = pytesseract.image_to_string(image_file)
+        print(extracted_text)
+
         
